@@ -26,6 +26,7 @@
 #include <sys/types.h>
 #include <ctype.h>
 #include <time.h>
+#include <fcntl.h>   
 
 /* ========== CONFIG ========== */
 #define APP_ID "com.ravenmpv.gui"
@@ -69,6 +70,10 @@ static GtkWidget *status_label;
 static GtkWidget *search_entry;
 static feed_data current_feed;
 static int feed_loading = 0;
+
+/* ========== FORWARD DECLARATIONS ========== */
+static void json_free(json_value *val);
+static json_value *json_find(json_value *obj, const char *key);
 
 /* ============================================================ */
 /*                    ENGINE (from CLI)                          */
